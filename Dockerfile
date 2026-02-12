@@ -1,8 +1,11 @@
 FROM php:8.2-apache
 
-# Paksa hanya prefork yang aktif
-RUN a2dismod mpm_event mpm_worker || true \
-    && a2enmod mpm_prefork
+# Hapus semua MPM yang mungkin aktif
+RUN rm -f /etc/apache2/mods-enabled/mpm_*.load \
+    && rm -f /etc/apache2/mods-enabled/mpm_*.conf
+
+# Aktifkan hanya prefork
+RUN a2enmod mpm_prefork
 
 # Install ekstensi MySQL
 RUN docker-php-ext-install pdo pdo_mysql
