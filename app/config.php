@@ -4,7 +4,7 @@ date_default_timezone_set('Asia/Jakarta');
 
 // Konfigurasi Database Dinamis (Mengambil dari Environment Variables Railway)
 $host = getenv('MYSQLHOST') ?: 'localhost';
-$db   = getenv('MYSQLDATABASE') ?: 'db_karang_taruna';
+$db   = getenv('MYSQL_DATABASE') ?: 'railway';
 $user = getenv('MYSQLUSER') ?: 'root';
 $pass = getenv('MYSQLPASSWORD') ?: '';
 $port = getenv('MYSQLPORT') ?: '3306';
@@ -22,4 +22,5 @@ try {
 $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http";
 $current_domain = $_SERVER['HTTP_HOST'];
 define('BASE_URL', $protocol . "://" . $current_domain . "/");
+
 ?>
