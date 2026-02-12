@@ -3,8 +3,8 @@ session_start();
 date_default_timezone_set('Asia/Jakarta');
 
 // Konfigurasi Database Dinamis (Mengambil dari Environment Variables Railway)
-$host = getenv('MYSQLHOST') ?: 'mysql.railway.internal';
-$db   = getenv('MYSQLDATABASE') ?: 'railway';
+$host = getenv('MYSQLHOST') ?: 'nozomi.proxy.rlwy.net';
+$db   = getenv('MYSQL_DATABASE') ?: 'railway';
 $user = getenv('MYSQLUSER') ?: 'root';
 $pass = getenv('MYSQLPASSWORD') ?: 'qnrZnungDLceUkeghLWDtyQxDbqNsGdD';
 $port = getenv('MYSQLPORT') ?: '3306';
@@ -24,6 +24,7 @@ $current_domain = $_SERVER['HTTP_HOST'];
 define('BASE_URL', $protocol . "://" . $current_domain . "/");
 
 ?>
+
 
 
 
